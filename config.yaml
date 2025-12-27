@@ -1,0 +1,26 @@
+models:
+  classifier: llama3.2:1b
+  code_analyst: codellama:7b
+  documentation: llama3.2:1b
+  default: llama3.2:1b
+
+model_assignments:
+  code_review: codellama:7b
+  documentation: llama3.2:1b
+  bug_analysis: codellama:7b
+
+prompts:
+  classify: |
+    Classify this content as exactly one of:
+    - code_review
+    - documentation
+    - bug_analysis
+    Respond with only the classification.
+  code_review: |
+    Analyze this code for bugs, performance, security, and maintainability.
+  documentation: |
+    Evaluate this documentation for clarity, completeness, and accuracy.
+
+thresholds:
+  max_response_time: 60
+  min_response_length: 50
